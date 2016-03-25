@@ -15,18 +15,7 @@
 				width: 100%;
 			}
 
-			@media(max-width: 900px) {
-				#tweets {
-					column-count: 2;
-					-webkit-column-count: 2;
-				}
-			}
-			@media(max-width: 600px) {
-				#tweets {
-					column-count: 1;
-					-webkit-column-count: 1;
-				}
-			}
+			
 			#intro {
 				position: fixed;
 				top: 0;
@@ -37,11 +26,12 @@
 				background: rgba(0,0,0,.7);
 			}
 			.text {
+				box-sizing: border-box;
 				position: fixed;
 				top: 20%;
 				left: 50%;
 				width: 500px;
-				margin: 0 0 0 -280px;
+				margin: 0 0 0 -250px;
 				background: whitesmoke;
 				text-align: center;
 				padding: 30px;
@@ -57,13 +47,30 @@
 				line-height: 20px;
 				cursor: pointer;
 			}
+			@media(max-width: 900px) {
+				#tweets {
+					column-count: 2;
+					-webkit-column-count: 2;
+				}
+			}
+			@media(max-width: 600px) {
+				#tweets {
+					column-count: 1;
+					-webkit-column-count: 1;
+				}
+				.text {
+					top: 10%;
+					width: 90%;
+					margin-left: -45%;
+				}
+			}
 		</style>
 	</head>
 	<body>
 		<div id="intro">
 			<div class="text">
 				<h1>HB2 Hurts North Carolina</h1>
-				<p>North Carolina Legislators passed a bill on March 23 in an emergency session. The bill prevents cities, towns, and counties from passing anti-discrimination rules beyond a new state standard. The bill has already been condemned by businesses inside and outside North Carolina.</p>
+				<p>In an emergency session held on March 23, North Carolina Legislators passed a bill preventing cities, towns and counties in North Carolina from passing anti-discrimination laws to protect LGBT citizens. The bill has already been condemned by businesses and corporations inside and outside of North Carolina and many others continue to express their opposition.</p>
 				<a onClick="hideIntro();" class="button">See the Tweets</a> <br> <br>
 				<a class="twitter-share-button" data-size="large"
   href="https://twitter.com/intent/tweet">
