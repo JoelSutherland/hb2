@@ -14,9 +14,59 @@
 				display: inline-block;
 				width: 100%;
 			}
+
+			@media(max-width: 900px) {
+				#tweets {
+					column-count: 2;
+					-webkit-column-count: 2;
+				}
+			}
+			@media(max-width: 600px) {
+				#tweets {
+					column-count: 1;
+					-webkit-column-count: 1;
+				}
+			}
+			#intro {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 2;
+				background: rgba(0,0,0,.7);
+			}
+			.text {
+				position: fixed;
+				top: 20%;
+				left: 50%;
+				width: 500px;
+				margin: 0 0 0 -280px;
+				background: whitesmoke;
+				text-align: center;
+				padding: 30px;
+				border-radius: 10px;
+				box-shadow: 0 0 5px rgba(0,0,0,.5);
+			}
+			.button {
+				display: inline-block;
+				padding: 10px 20px;
+				color: white;
+				border-radius: 5px;
+				background-color: #0033aa;
+				line-height: 20px;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
+		<div id="intro">
+			<div class="text">
+				<h1>HB2 Hurts North Carolina</h1>
+				<p>North Carolina Legislators passed a bill on March 23 in an emergency session. The bill prevents cities, towns, and counties from passing anti-discrimination rules beyond a new state standard. The bill has already been condemned by businesses inside and outside North Carolina.</p>
+				<a onClick="hideIntro();" class="button">See the Tweets</a>
+			</div>
+		</div>
 		<div id="tweets">
 			<div class="tweet">
 				<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We believe in equal rights and equal treatment for all. This North Carolina law is misguided &amp; wrong. <a href="https://twitter.com/hashtag/WeAreNotThis?src=hash">#WeAreNotThis</a> <a href="https://t.co/3yCayn7Tum">pic.twitter.com/3yCayn7Tum</a></p>&mdash; Google (@google) <a href="https://twitter.com/google/status/713128258607390720">March 24, 2016</a></blockquote>
@@ -51,9 +101,27 @@
 			<div class="tweet">
 				<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">At <a href="https://twitter.com/hashtag/RedHat?src=hash">#RedHat</a> we strongly value diversity: <a href="https://t.co/XDfUVzC1OL">https://t.co/XDfUVzC1OL</a>. HB#2 is a clear step backwards. Sad day. <a href="https://twitter.com/hashtag/WeAreNotThis?src=hash">#WeAreNotThis</a></p>&mdash; Jim Whitehurst (@JWhitehurst) <a href="https://twitter.com/JWhitehurst/status/712739076877582336">March 23, 2016</a></blockquote>
 			</div>
+			<div class="tweet">
+				<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Biogen opposes <a href="https://twitter.com/hashtag/NCGA?src=hash">#NCGA</a> attempt to undermine equality in NC via <a href="https://twitter.com/hashtag/HB2?src=hash">#HB2</a>. We support advancing the power of difference <a href="https://t.co/RlxgLt3JBC">https://t.co/RlxgLt3JBC</a></p>&mdash; Biogen (@biogen) <a href="https://twitter.com/biogen/status/712746000927047680">March 23, 2016</a></blockquote>
+			</div>
 		</div>
 
 
 		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<script>
+			Element.prototype.remove = function() {
+			    this.parentElement.removeChild(this);
+			}
+			NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+			    for(var i = this.length - 1; i >= 0; i--) {
+			        if(this[i] && this[i].parentElement) {
+			            this[i].parentElement.removeChild(this[i]);
+			        }
+			    }
+			}
+			function hideIntro() {
+				document.getElementById('intro').remove();
+			}
+		</script>
 	</body>
 </html>
